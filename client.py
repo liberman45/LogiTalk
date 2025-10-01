@@ -217,7 +217,7 @@ class ChatWindow(CTk):
                 raw = f.read()
             b64 = base64.b64encode(raw).decode()
             short_name = os.path.basename(file_name)
-            data = f'IMAGE@{self.user_name}@{short_name}@{b64}'
+            data = f'IMAGE@{self.user_name}@{short_name}@{b64}\n'
             self.sock.sendall(data.encode())
             self.add_message('', CTkImage(light_image=Image.open(file_name), size=(300, 300)))
         except Exception as e:
@@ -298,6 +298,7 @@ class ChatWindow(CTk):
 
 
 window = AuthWindow()
+
 
 
 window.mainloop()
